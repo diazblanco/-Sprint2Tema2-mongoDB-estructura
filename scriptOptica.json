@@ -1,0 +1,365 @@
+// id proveedores
+ObjectId("626012c6899e9a2a2d0d9794"),
+ObjectId("626012c6899e9a2a2d0d9795"),
+ObjectId("626012c6899e9a2a2d0d9796"),
+ObjectId("626012c6899e9a2a2d0d9797")
+
+//id clientes
+ObjectId("6260133c899e9a2a2d0d9798"),
+ObjectId("6260133c899e9a2a2d0d9799"),
+ObjectId("6260133c899e9a2a2d0d979a")
+
+//id gafas
+ObjectId("62601c69899e9a2a2d0d979b"),
+ObjectId("62601c69899e9a2a2d0d979c"),
+ObjectId("62601c69899e9a2a2d0d979d"),
+ObjectId("62601c69899e9a2a2d0d979e"),
+ObjectId("62601c69899e9a2a2d0d979f"),
+ObjectId("62601c69899e9a2a2d0d97a0"),
+ObjectId("62601c69899e9a2a2d0d97a1")
+
+//id Ventas
+ObjectId("62605069899e9a2a2d0d97a2"),
+ObjectId("62605069899e9a2a2d0d97a3"),
+ObjectId("62605069899e9a2a2d0d97a4"),
+ObjectId("62605069899e9a2a2d0d97a5"),
+ObjectId("62605069899e9a2a2d0d97a6"),
+ObjectId("62605069899e9a2a2d0d97a7")
+
+
+> use optica
+
+> db.proveedor.insertMany([
+    {
+        "nombre": "Gafa Pasta SL",
+        "direccion": {
+            "calle": "c/ Gran",
+            "numero": 45,
+            "ciudad": "La Garriga",
+            "CP": "08530",
+            "pais": "Espanya",
+        },
+        "telefono": "654321456",
+        "fax": "654321456",
+        "NIF": "78654321K",
+    },
+    {
+        "nombre": "Gafas Molonguis SA",
+        "direccion": {
+            "calle": "c/ Ramón Pascual",
+            "numero": 17,
+            "piso": "2º",
+            "puerta": "3ª",
+            "ciudad": "La Garriga",
+            "CP": "08530",
+            "pais": "Espanya",
+        },
+        "telefono": "609876543",
+        "fax": "609876543",
+        "NIF": "08754321D",
+    },
+    {
+        "nombre": "Optigafas SL",
+        "direccion": {
+            "calle": "c/ Calàbria",
+            "numero": 23,
+            "ciudad": "La Garriga",
+            "CP": "08530",
+            "pais": "Espanya",
+        },
+        "telefono": "615638754",
+        "NIF": "35892096G",
+    },
+    {
+        "nombre": "Ni 3 en un burro SL",
+        "direccion": {
+            "calle": "c/ de la Sinia",
+            "numero": 87,
+            "piso": "1º",
+            "puerta": "2ª",
+            "ciudad": "La Garriga",
+            "CP": "08530",
+            "pais": "Espanya",
+        },
+        "telefono": "609653298",
+        "NIF": "25679402J",
+    },
+])
+
+> db.cliente.insertMany([
+    {
+        "nombre": "Carla",
+        "direccion": {
+            "calle": "Passeig dels Til·lers",
+            "numero": 46,
+            "piso": "2º",
+            "puerta": "A",
+            "ciudad": "La garriga",
+            "CP": "08530",
+            "pais": "Espanya"
+        },
+        "telefono": 677654210,
+        "mail": "algo@algo.com",
+        "fecha_alta": new Date ("01/02/2022"),
+    },
+    {
+        "nombre": "Laura",
+        "direccion": {
+            "calle": "c/ Santa Digna",
+            "numero": "14",
+            "ciudad": "La garriga",
+            "CP": "08530",
+            "pais": "Espanya"
+        },
+        "telefono": 609345276,
+        "mail": "aalgo@algo.com",
+        "fecha_alta": new Date ("25/01/2022"),
+    },
+    {
+        "nombre": "Marc",
+        "direccion": {
+            "calle": "c/ Banys",
+            "numero": 56,
+            "piso": "1º",
+            "puerta": "1ª",
+            "ciudad": "La garriga",
+            "CP": "08530",
+            "pais": "Espanya"
+        },
+        "telefono": 62356789,
+        "mail": "algoo@algo.com",
+        "fecha_alta": new Date ("27/03/2022"),
+    },
+])
+
+> db.cliente.update({"nombre": "Laura"},{"$set": {"cliente_id_recomienda": ObjectId("6260133c899e9a2a2d0d9798")}})
+> db.cliente.update({"nombre": "Marc"},{"$set": {"cliente_id_recomienda": ObjectId("6260133c899e9a2a2d0d9799")}})
+
+> db.gafas.insertMany([
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 1.25,
+                "color": "Transparente",
+            },
+            "cristal_izq": {
+                "graduacion": 0,
+                "color": "Transparente",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Lila",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Polaroid",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9794"),
+    },
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 0.75,
+                "color": "Coyote",
+            },
+            "cristal_izq": {
+                "graduacion": 1.75,
+                "color": "Coyote",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Verde limón",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Munich",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9795"),
+    },
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 1.75,
+                "color": "Polarizado",
+            },
+            "cristal_izq": {
+                "graduacion": 1.5,
+                "color": "Polarizado",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Amarillo",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Police",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9796"),
+    },
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 0.25,
+                "color": "Arena",
+            },
+            "cristal_izq": {
+                "graduacion": 0.55,
+                "color": "Arena",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Marrón leopardo",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Police",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9796"),
+    },
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 0.25,
+                "color": "Negro",
+            },
+            "cristal_izq": {
+                "graduacion": 0.75,
+                "color": "Negro",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Rojo",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Persol",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9797"),
+    },
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 1.25,
+                "color": "Transparente",
+            },
+            "cristal_izq": {
+                "graduacion": 1.50,
+                "color": "Transparente",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Negro",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Munich",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9795"),
+    },
+    {
+        "cristales": {
+            "cristal_dch": {
+                "graduacion": 1.75,
+                "color": "Arena",
+            },
+            "cristal_izq": {
+                "graduacion": 1.75,
+                "color": "Arena",
+            }
+        },
+        "montura": {
+            "tipo": [
+                "flotante",
+                "pasta",
+                "metalica"
+            ],
+            "color": "Blanco",
+        },
+        "precio": 99.9,
+        "marca": {
+            "nombre": "Police",
+        },
+        "proveedor_id": ObjectId("626012c6899e9a2a2d0d9796"),
+    }
+])
+
+> db.venta.insertMany([
+    {
+        "fecha_venta": new Date ("01/02/2022"),
+        "clinte_id": ObjectId("6260133c899e9a2a2d0d9798"),
+        "gafas_id": "62601c69899e9a2a2d0d979d",
+        "vendedor": {
+            "nombre": "Tània",
+        }
+    },
+    {
+        "fecha_venta": new Date ("15/03/2022"),
+        "clinte_id": ObjectId("6260133c899e9a2a2d0d9798"),
+        "gafas_id": "62601c69899e9a2a2d0d979b",
+        "vendedor": {
+            "nombre": "Narcís",
+        }
+    },
+    {
+        "fecha_venta": new Date ("05/04/2022"),
+        "clinte_id":ObjectId("6260133c899e9a2a2d0d9798"),
+        "gafas_id": "62601c69899e9a2a2d0d979e",
+        "vendedor": {
+            "nombre": "Lucia",
+        }
+    },
+    {
+        "fecha_venta": new Date ("25/01/2022"),
+        "clinte_id": ObjectId("6260133c899e9a2a2d0d9799"),
+        "gafas_id": "62601c69899e9a2a2d0d97a1",
+        "vendedor": {
+            "nombre": "Júlia",
+        }
+    },
+    {
+        "fecha_venta": new Date ("03/04/2022"),
+        "clinte_id": ObjectId("6260133c899e9a2a2d0d9799"),
+        "gafas_id": "62601c69899e9a2a2d0d979f",
+        "vendedor": {
+            "nombre": "Júlia",
+        }
+    },
+    {
+        "fecha_venta": new Date ("27/03/2022"),
+        "clinte_id": ObjectId("6260133c899e9a2a2d0d979a"),
+        "gafas_id": ObjectId("62601c69899e9a2a2d0d979c"),
+        "vendedor": {
+            "nombre": "Narcís",
+        }
+    },
+])
