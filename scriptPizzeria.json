@@ -1,0 +1,353 @@
+// id provincias
+"insertedIds" : [
+    ObjectId("6263b67c899e9a2a2d0d97b2"), //Barna
+    ObjectId("6263b67c899e9a2a2d0d97b3"),
+    ObjectId("6263b67c899e9a2a2d0d97b4"),
+    ObjectId("6263b67c899e9a2a2d0d97b5")
+]
+
+// id localidades
+"insertedIds" : [
+    ObjectId("6263b74b899e9a2a2d0d97b6"), //La Garriga
+    ObjectId("6263b74b899e9a2a2d0d97b7"),
+    ObjectId("6263b74b899e9a2a2d0d97b8")
+]
+
+// id clientes
+"insertedIds" : [
+    ObjectId("6263b9f8899e9a2a2d0d97b9"),
+    ObjectId("6263b9f8899e9a2a2d0d97ba"),
+    ObjectId("6263b9f8899e9a2a2d0d97bb")
+]
+
+//id tienda
+"insertedIds" : [
+    ObjectId("6263bb57899e9a2a2d0d97bc"), //La Garriga
+    ObjectId("6263bb57899e9a2a2d0d97bd")
+]
+
+//id empleado
+"insertedIds" : [
+    ObjectId("6263c010899e9a2a2d0d97be"), //Repartidor
+    ObjectId("6263c010899e9a2a2d0d97bf") //Cocinero
+]
+
+//id burguer
+"insertedIds" : [
+    ObjectId("6263c4d9899e9a2a2d0d97c0"),
+    ObjectId("6263c4d9899e9a2a2d0d97c1")
+]
+
+//id categoria-pizza
+"insertedIds" : [
+    ObjectId("6263ce16899e9a2a2d0d97c2"),
+    ObjectId("6263ce16899e9a2a2d0d97c3"),
+    ObjectId("6263ce16899e9a2a2d0d97c4")
+]
+
+//id pizza
+"insertedIds" : [
+    ObjectId("6263d18d899e9a2a2d0d97c5"),
+    ObjectId("6263d18d899e9a2a2d0d97c6"),
+    ObjectId("6263d18d899e9a2a2d0d97c7"),
+    ObjectId("6263d18d899e9a2a2d0d97c8")
+]
+
+//id bebida
+"insertedIds" : [
+    ObjectId("6263d338899e9a2a2d0d97c9"),
+    ObjectId("6263d338899e9a2a2d0d97ca"),
+    ObjectId("6263d338899e9a2a2d0d97cb"),
+    ObjectId("6263d338899e9a2a2d0d97cc"),
+    ObjectId("6263d338899e9a2a2d0d97cd")
+]
+
+//id pedido_burguer
+"insertedIds" : [
+    ObjectId("6263d466899e9a2a2d0d97ce")
+]
+
+//id pedido_pizza
+"insertedIds" : [
+    ObjectId("6263d51e899e9a2a2d0d97cf"),
+    ObjectId("6263d51e899e9a2a2d0d97d0")
+]
+
+//id peido_bebida
+"insertedIds" : [
+    ObjectId("6263d5a3899e9a2a2d0d97d1"),
+    ObjectId("6263d5a3899e9a2a2d0d97d2"),
+    ObjectId("6263d5a3899e9a2a2d0d97d3")
+]
+
+//id pedido
+"insertedIds" : [
+    ObjectId("6263dd00899e9a2a2d0d97d7"),
+    ObjectId("6263dd00899e9a2a2d0d97d8"),
+    ObjectId("6263dd00899e9a2a2d0d97d9")
+]
+
+> use pizzeria
+
+> db.provincia.insertMany([
+    {
+        "nombre" : "Barcelona",
+    },
+    {
+        "nombre" : "Girona",
+    },
+    {
+        "nombre" : "Lleida",
+    },
+    {
+        "nombre" : "Tarragona",
+    }
+])
+> db.localidad.insertMany([
+    {
+        "nombre" : "La Garriga",
+        "provincia_id": ObjectId("6263b67c899e9a2a2d0d97b2"),
+    },
+    {
+        "nombre" : "Granollers",
+        "provincia_id": ObjectId("6263b67c899e9a2a2d0d97b2"),
+    },
+    {
+        "nombre" : "Les Franqueses",
+        "provincia_id": ObjectId("6263b67c899e9a2a2d0d97b2"),
+    }
+])
+> db.cliente.insertMany([
+    {
+        "nombre" : "Marc",
+        "apellidos" : "Morales Ureña",
+        "direccion" : {
+            "calle": "c/ Ramón Pascual",
+            "numero": 17,
+            "piso": "2º",
+            "puerta": "3ª",
+            "CP": "08530",
+        },
+        "telefono" : "656432123",
+        "localidad_id": ObjectId("6263b74b899e9a2a2d0d97b6"),
+    },
+    {
+        "nombre" : "Laia",
+        "apellidos" : "Riu Vadia",
+        "direccion" : {
+            "calle": "c/ Gran",
+            "numero": 8,
+            "CP": "08530",
+        },
+        "telefono" : "636789456",
+        "localidad_id": ObjectId("6263b74b899e9a2a2d0d97b6"),
+    },
+    {
+        "nombre" : "Albert",
+        "apellidos" : "Homs Cruells",
+        "direccion" : {
+            "calle": "c/ Impremta",
+            "numero": 11,
+            "piso": "1º",
+            "puerta": "5ª",
+            "CP": "08530",
+        },
+        "telefono" : "609876543",
+        "localidad_id": ObjectId("6263b74b899e9a2a2d0d97b6"),
+    }
+])
+> db.tienda.insertMany([
+    {
+        "direccion" : {
+            "calle": "c/ de la Sinia",
+            "numero": 25,
+            "CP": "08530",
+        },
+        "localidad_id": ObjectId("6263b74b899e9a2a2d0d97b6"),
+    },
+    {
+        "direccion" : {
+            "calle": "c/ Major",
+            "numero": 345,
+            "CP": "08530",
+        },
+        "localidad_id": ObjectId("6263b74b899e9a2a2d0d97b7"),
+    }
+])
+> db.empleado.insertMany([
+    {
+        "nombre" : "Alba",
+        "apellidos" : "Ventura Pou",
+        "nif" : "65432134R",
+        "telefono" : "654321335",
+        "tipo": [
+            "Cocinero",
+            "Repartidor"
+        ],
+        "servicio_domicilio" : true,
+        "tienda_id": ObjectId("6263bb57899e9a2a2d0d97bc"),
+    },
+    {
+        "nombre" : "Marc",
+        "apellidos" : "Parra Leis",
+        "nif" : "98653456C",
+        "telefono" : "675432123",
+        "tipo": [
+            "Cocinero",
+            "Repartidor"
+        ],
+        "servicio_domicilio" : false,
+        "tienda_id": ObjectId("6263bb57899e9a2a2d0d97bc"),
+    }
+])
+> db.burguer.insertMany([
+    {
+        "nombre" : "Ternera",
+        "descripcion" : "100% ternera 1/4 de kilo",
+        "img" : "ternera.png",
+        "precio" : 4.50,
+    },
+    {
+        "nombre" : "Pollo",
+        "descripcion" : "100% pollo 1/4 de kilo",
+        "img" : "pollo.png",
+        "precio" : 3.50,
+    }
+])
+> db.categoriaPizza.insertMany([
+    {
+        "nombre" : "Basica",
+    },
+    {
+        "nombre" : "Especial",
+    },
+    {
+        "nombre" : "Extra",
+    }
+])
+> db.Pizza.insertMany([
+    {
+        "nombre" : "Margarita",
+        "descripcion" : "Queso Mozzarella, jamón y tomate al oreganato",
+        "img" : "margarita.png",
+        "precio" : 9.99,
+        "categoriaPizza_id": ObjectId("6263ce16899e9a2a2d0d97c2"),
+    },
+    {
+        "nombre" : "4 quesos",
+        "descripcion" : "Queso Mozzarella, queso Edam, queso Gouda, queso Azul y tomate al oreganato",
+        "img" : "4quesos.png",
+        "precio" : 9.99,
+        "categoriaPizza_id": ObjectId("6263ce16899e9a2a2d0d97c2"),
+    },
+    {
+        "nombre" : "Barbacoa",
+        "descripcion" : "Queso Mozzarella, carne picada, salsa barbacoa y tomate al oreganato",
+        "img" : "barbacoa.png",
+        "precio" : 11.99,
+        "categoriaPizza_id": ObjectId("6263ce16899e9a2a2d0d97c3"),
+    },
+    {
+        "nombre" : "La Garriga",
+        "descripcion" : "Queso Mozzarella, jamón, botifarra, huevo y tomate al oreganato",
+        "img" : "laGarriga.png",
+        "precio" : 9.99,
+        "categoriaPizza_id": ObjectId("6263ce16899e9a2a2d0d97c4"),
+    }
+])
+
+> db.bebida.insertMany([ 
+    {
+        "nombre" : "Agua",
+        "descripcion" : "Agua mineral",
+        "img" : "agua.png",
+        "precio" : 1.00,
+    },
+    {
+        "nombre" : "Trina",
+        "descripcion" : "Trina limón",
+        "img" : "trina.png",
+        "precio" : 1.40,
+    },
+    {
+        "nombre" : "Cerveza",
+        "descripcion" : "Cerveza Estrella con alcohol",
+        "img" : "cerveza.png",
+        "precio" : 2.00,
+    },
+    {
+        "nombre" : "Cerveza sin",
+        "descripcion" : "Cerveza Estrella sin alcohol",
+        "img" : "cervezaSin.png",
+        "precio" : 2.00,
+    },
+    {
+        "nombre" : "Cerveza tostada",
+        "descripcion" : "Cerveza negra",
+        "img" : "cervezaNegra.png",
+        "precio" : 2.40,
+    }
+])
+> db.pedidoBurguer.insert([
+    {
+        "burguer_id": ObjectId("6263c4d9899e9a2a2d0d97c0"),
+        "cantidad" : 2,
+    }
+])
+> db.pedidoPizza.insertMany([
+    {
+        "pizza_id": ObjectId("6263d18d899e9a2a2d0d97c7"),
+        "cantidad" : 2,
+    },
+    {
+        "pizza_id": ObjectId("6263d18d899e9a2a2d0d97c8"),
+        "cantidad" : 1,
+    }
+])
+> db.pedidoBebida.insertMany([
+    {
+        "bebida_id": ObjectId("6263d338899e9a2a2d0d97cb"),
+        "cantidad" : 2,
+    },
+    {
+        "bebida_id": ObjectId("6263d338899e9a2a2d0d97cd"),
+        "cantidad" : 1,
+    },
+    {
+        "bebida_id": ObjectId("6263d338899e9a2a2d0d97cc"),
+        "cantidad" : 2,
+    }
+])
+> db.pedido.insertMany([
+    {
+        "fecha_pedido": new Date ("03/04/2022 21:34:12"),
+        "entrega" : "tienda",
+        "cliente_id": ObjectId("6263b9f8899e9a2a2d0d97b9"),
+        "pedidoBurguer_id": null,
+        "pedidoPizza_id": ObjectId("6263d51e899e9a2a2d0d97cf"),
+        "pedidoBebida_id": ObjectId("6263d5a3899e9a2a2d0d97d1"),
+        "precioTotal" : 21.98,
+    },
+    {
+        "fecha_pedido": new Date ("01/02/2022 22:05:09"),
+        "entrega" : "domicilio",
+        "cliente_id": ObjectId("6263b9f8899e9a2a2d0d97ba"),
+        "pedidoBurguer_id": ObjectId("6263d466899e9a2a2d0d97ce"),
+        "pedidoPizza_id": null,
+        "pedidoBebida_id": ObjectId("6263d5a3899e9a2a2d0d97d2"),
+        "servicio_domicilio" : {
+            "fecha_alta": new Date ("01/02/2022 22:35:24"),
+            "empleado_id": ObjectId("6263c010899e9a2a2d0d97be"),
+        },
+        "precioTotal" : 10.40,
+    },
+    {
+        "fecha_pedido": new Date ("04/04/2022 22:34:09"),
+        "entrega" : "tienda",
+        "cliente_id": ObjectId("6263b9f8899e9a2a2d0d97bb"),
+        "pedidoBurguer_id": null,
+        "pedidoPizza_id": ObjectId("6263d51e899e9a2a2d0d97d0"),
+        "pedidoBebida_id": ObjectId("6263d5a3899e9a2a2d0d97d3"),
+        "precioTotal" : 13.99,
+    }
+])

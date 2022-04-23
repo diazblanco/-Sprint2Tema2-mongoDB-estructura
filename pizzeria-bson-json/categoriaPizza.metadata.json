@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"cbcdb5130904491699b27238cd20470e","collectionName":"categoriaPizza","type":"collection"}

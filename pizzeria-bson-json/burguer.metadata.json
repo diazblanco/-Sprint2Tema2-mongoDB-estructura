@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"9f6fcc1566d542e9b15bfb6cfb68e451","collectionName":"burguer","type":"collection"}
