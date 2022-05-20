@@ -1,0 +1,314 @@
+// id localidades
+"insertedIds" : [
+    ObjectId("6287bd1b899e9a2a2d0d97f2"), // La Garriga
+    ObjectId("6287bd1b899e9a2a2d0d97f3"),
+    ObjectId("6287bd1b899e9a2a2d0d97f4")
+]
+
+// id clientes
+"insertedIds" : [
+    ObjectId("6287bf55899e9a2a2d0d97f5"),
+    ObjectId("6287bf55899e9a2a2d0d97f6"),
+    ObjectId("6287bf55899e9a2a2d0d97f7")
+]
+
+//id tienda
+"insertedIds" : [
+    ObjectId("6287bfb5899e9a2a2d0d97f8"), // La Garriga
+    ObjectId("6287bfb5899e9a2a2d0d97f9")
+]
+
+//id empleado
+"insertedIds" : [
+    ObjectId("6287bff7899e9a2a2d0d97fa"),
+    ObjectId("6287bff7899e9a2a2d0d97fb")
+]
+
+//id producto
+"insertedIds" : [
+    //BURGUER
+    ObjectId("6287c01c899e9a2a2d0d97fc"),
+    ObjectId("6287c01c899e9a2a2d0d97fd"),
+    //PIZZA
+    ObjectId("6287c01c899e9a2a2d0d97fe"),
+    ObjectId("6287c01c899e9a2a2d0d97ff"),
+    ObjectId("6287c01c899e9a2a2d0d9800"),
+    ObjectId("6287c01c899e9a2a2d0d9801"),
+    //BEBIDA
+    ObjectId("6287c01c899e9a2a2d0d9802"),
+    ObjectId("6287c01c899e9a2a2d0d9803"),
+    ObjectId("6287c01c899e9a2a2d0d9804"),
+    ObjectId("6287c01c899e9a2a2d0d9805"),
+    ObjectId("6287c01c899e9a2a2d0d9806")
+]
+
+//id Pedido
+"insertedIds" : [
+    ObjectId("6287c23f899e9a2a2d0d9807"),
+    ObjectId("6287c23f899e9a2a2d0d9808"),
+    ObjectId("6287c23f899e9a2a2d0d9809")
+]
+
+//////////////////
+
+> use pizzeria
+
+> db.localidad.insertMany([
+    {
+        "nombre" : "La Garriga",
+        "provincia" : "Barcelona",
+    },
+    {
+        "nombre" : "Granollers",
+        "provincia" : "Barcelona",
+    },
+    {
+        "nombre" : "Les Franqueses",
+        "provincia" : "Barcelona",
+    }
+])
+
+> db.cliente.insertMany([
+    {
+        "nombre" : "Marc",
+        "apellidos" : "Morales Ureña",
+        "direccion" : {
+            "calle": "c/ Ramón Pascual",
+            "numero": 17,
+            "piso": "2º",
+            "puerta": "3ª",
+            "CP": "08530",
+        },
+        "telefono" : "656432123",
+        "localidad_id": ObjectId("6287bd1b899e9a2a2d0d97f2"),
+    },
+    {
+        "nombre" : "Laia",
+        "apellidos" : "Riu Vadia",
+        "direccion" : {
+            "calle": "c/ Gran",
+            "numero": 8,
+            "CP": "08530",
+        },
+        "telefono" : "636789456",
+        "localidad_id": ObjectId("6287bd1b899e9a2a2d0d97f2"),
+    },
+    {
+        "nombre" : "Albert",
+        "apellidos" : "Homs Cruells",
+        "direccion" : {
+            "calle": "c/ Impremta",
+            "numero": 11,
+            "piso": "1º",
+            "puerta": "5ª",
+            "CP": "08530",
+        },
+        "telefono" : "609876543",
+        "localidad_id": ObjectId("6287bd1b899e9a2a2d0d97f2"),
+    }
+])
+
+> db.tienda.insertMany([
+    {
+        "direccion" : {
+            "calle": "c/ de la Sinia",
+            "numero": 25,
+            "CP": "08530",
+        },
+        "localidad_id": ObjectId("6287bd1b899e9a2a2d0d97f2"),
+    },
+    {
+        "direccion" : {
+            "calle": "c/ Major",
+            "numero": 345,
+            "CP": "08540",
+        },
+        "localidad_id": ObjectId("6287bd1b899e9a2a2d0d97f3"),
+    }
+])
+
+> db.empleado.insertMany([
+    {
+        "nombre" : "Alba",
+        "apellidos" : "Ventura Pou",
+        "nif" : "65432134R",
+        "telefono" : "654321335",
+        "tipo": [
+            "Cocinero",
+            "Repartidor"
+        ],
+        "servicio_domicilio" : true,
+        "tienda_id": ObjectId("6287bfb5899e9a2a2d0d97f8"),
+    },
+    {
+        "nombre" : "Marc",
+        "apellidos" : "Parra Leis",
+        "nif" : "98653456C",
+        "telefono" : "675432123",
+        "tipo": [
+            "Cocinero",
+            "Repartidor"
+        ],
+        "servicio_domicilio" : false,
+        "tienda_id": ObjectId("6287bfb5899e9a2a2d0d97f8"),
+    }
+])
+
+> db.producto.insertMany([
+    {
+        "tipo" : "Burguer",
+        "nombre" : "Ternera",
+        "descripcion" : "100% ternera 1/4 de kilo",
+        "img" : "ternera.png",
+        "precio" : 4.50,
+    },
+    {
+        "tipo" : "Burguer",
+        "nombre" : "Pollo",
+        "descripcion" : "100% pollo 1/4 de kilo",
+        "img" : "pollo.png",
+        "precio" : 3.50,
+    },
+    {
+        "tipo" : "Pizza",
+        "nombre" : "Margarita",
+        "descripcion" : "Queso Mozzarella, jamón y tomate al oreganato",
+        "img" : "margarita.png",
+        "precio" : 9.99,
+        "categoria": "Basica",
+    },
+    {
+        "tipo" : "Pizza",
+        "nombre" : "4 quesos",
+        "descripcion" : "Queso Mozzarella, queso Edam, queso Gouda, queso Azul y tomate al oreganato",
+        "img" : "4quesos.png",
+        "precio" : 9.99,
+        "categoria": "Basica",
+    },
+    {
+        "tipo" : "Pizza",
+        "nombre" : "Barbacoa",
+        "descripcion" : "Queso Mozzarella, carne picada, salsa barbacoa y tomate al oreganato",
+        "img" : "barbacoa.png",
+        "precio" : 11.99,
+        "categoria": "Especial",
+    },
+    {
+        "tipo" : "Pizza",
+        "nombre" : "La Garriga",
+        "descripcion" : "Queso Mozzarella, jamón, botifarra, huevo y tomate al oreganato",
+        "img" : "laGarriga.png",
+        "precio" : 9.99,
+        "categoria": "Extra",
+    },
+    {
+        "tipo" : "bebida",
+        "nombre" : "Agua",
+        "descripcion" : "Agua mineral",
+        "img" : "agua.png",
+        "precio" : 1.00,
+    },
+    {
+        "tipo" : "bebida",
+        "nombre" : "Trina",
+        "descripcion" : "Trina limón",
+        "img" : "trina.png",
+        "precio" : 1.40,
+    },
+    {
+        "tipo" : "bebida",
+        "nombre" : "Cerveza",
+        "descripcion" : "Cerveza Estrella con alcohol",
+        "img" : "cerveza.png",
+        "precio" : 2.00,
+    },
+    {
+        "tipo" : "bebida",
+        "nombre" : "Cerveza sin",
+        "descripcion" : "Cerveza Estrella sin alcohol",
+        "img" : "cervezaSin.png",
+        "precio" : 2.00,
+    },
+    {
+        "tipo" : "bebida",
+        "nombre" : "Cerveza tostada",
+        "descripcion" : "Cerveza negra",
+        "img" : "cervezaNegra.png",
+        "precio" : 2.40,
+    }
+])
+
+> db.pedido.insertMany([
+    {
+        "fecha_pedido": new Date ("03/04/2022 21:34:12"),
+        "entrega" : "tienda",
+        "cliente_id": ObjectId("6287bf55899e9a2a2d0d97f5"),
+        "productos": [
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9800"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9801"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9805"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9806"),
+                "cantidad": 1
+            }
+        ],
+        "precioTotal" : 21.98,
+    },
+    {
+        "fecha_pedido": new Date ("01/02/2022 22:05:09"),
+        "entrega" : "domicilio",
+        "cliente_id": ObjectId("6287bf55899e9a2a2d0d97f6"),
+        "productos": [
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d97fc"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d97fd"),
+                "cantidad":1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9805"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9806"),
+                "cantidad": 1
+            }
+        ],
+        "precioTotal" : 10.40,
+        "servicio_domicilio" : {
+            "fecha_alta": new Date ("01/02/2022 22:35:24"),
+            "empleado_id": ObjectId("6287bff7899e9a2a2d0d97fa"),
+        },
+    },
+    {
+        "fecha_pedido": new Date ("04/04/2022 22:34:09"),
+        "entrega" : "tienda",
+        "cliente_id": ObjectId("6287bf55899e9a2a2d0d97f7"),
+        "productos": [
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d97fe"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d97ff"),
+                "cantidad": 1
+            },
+            {
+                "producto_id": ObjectId("6287c01c899e9a2a2d0d9805"),
+                "cantidad": 2
+            }
+        ],
+        "precioTotal" : 15.99,
+    }
+])
